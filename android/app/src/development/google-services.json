@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "856949054825",
+    "project_id": "flutther-dev",
+    "storage_bucket": "flutther-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856949054825:android:1ae67c1e3bb1fcbfb231f8",
+        "android_client_info": {
+          "package_name": "xyz.ezragunn.flutther.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvGAVI0aG8XgfJGouSCbl_RQsC7qSHOBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
