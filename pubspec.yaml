@@ -1,0 +1,31 @@
+name: flutther
+description: Flutther is a weather app made of Flutter with OpenWeatherMap and flutter_bloc
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: "^3.3.0"
+
+dependencies:
+  bloc: ^8.1.3
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.4
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.1
+  weather_provider:
+    path: packages/weather/weather_provider
+  weather_repository:
+    path: packages/weather/weather_repository
+
+dev_dependencies:
+  bloc_test: ^9.1.6
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.3
+  very_good_analysis: ^5.1.0
+
+flutter:
+  uses-material-design: true
+  generate: true
