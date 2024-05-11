@@ -17,6 +17,7 @@ dependencies:
   flutter_bloc: ^8.1.4
   flutter_localizations:
     sdk: flutter
+  google_fonts: ^6.2.1
   intl: ^0.18.1
   weather_provider:
     path: packages/weather/weather_provider
