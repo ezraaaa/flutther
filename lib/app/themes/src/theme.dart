@@ -367,6 +367,9 @@ class MaterialTheme {
         ),
         scaffoldBackgroundColor: colorScheme.background,
         canvasColor: colorScheme.surface,
+        appBarTheme: const AppBarTheme(
+          centerTitle: false,
+        ),
       );
 
   List<ExtendedColor> get extendedColors => [];
