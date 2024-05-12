@@ -42,7 +42,7 @@ class WeatherProvider {
     required num longitude,
   }) async {
     final template = UriTemplate(
-      '$openWeatherApiUrl/weather{?lat,lon,appid,units}',
+      '$openWeatherApiUrl/weather{?q,lat,lon,appid,units}',
     );
 
     final apiUri = Uri.parse(
@@ -59,7 +59,18 @@ class WeatherProvider {
           await _apiRequestHelper.get(uri: apiUri) as Map<String, dynamic>?;
 
       if (weatherResponse != null) {
-        return LocationWeather.fromJson(weatherResponse);
+        final weather = LocationWeather.fromJson(weatherResponse);
+
+        final mappedWeather = weather.weather
+                ?.map(
+                  (weatherItem) => weatherItem.copyWith(
+                    type: weatherItem.id?.toWeatherType ?? WeatherType.unknown,
+                  ),
+                )
+                .toList(growable: false) ??
+            [];
+
+        return weather.copyWith(weather: mappedWeather);
       } else {
         return LocationWeather.empty;
       }
@@ -73,6 +84,46 @@ class WeatherProvider {
         code: 'timeout',
         message: error.message,
       );
+    }
+  }
+}
+
+extension on num {
+  WeatherType get toWeatherType {
+    switch (this) {
+      case >= 200 && <= 232:
+        return WeatherType.thunderstorm;
+      case >= 300 && <= 321:
+        return WeatherType.drizzle;
+      case >= 500 && <= 531:
+        return WeatherType.rain;
+      case >= 600 && <= 622:
+        return WeatherType.snow;
+      case 701:
+        return WeatherType.mist;
+      case 711:
+        return WeatherType.smoke;
+      case 721:
+        return WeatherType.haze;
+      case 741:
+        return WeatherType.fog;
+      case 751:
+        return WeatherType.sand;
+      case 762:
+        return WeatherType.ash;
+      case 771:
+        return WeatherType.squall;
+      case 781:
+        return WeatherType.mist;
+      case 731:
+      case 761:
+        return WeatherType.dust;
+      case 800:
+        return WeatherType.clear;
+      case >= 801 && <= 804:
+        return WeatherType.clouds;
+      default:
+        return WeatherType.unknown;
     }
   }
 }
