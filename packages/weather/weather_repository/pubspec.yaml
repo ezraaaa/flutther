@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  weather_provider:
+    path: ../weather_provider
 
 dev_dependencies:
   flutter_test:
