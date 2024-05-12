@@ -3,6 +3,57 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'weather.g.dart';
 
+/// Types of weather
+enum WeatherType {
+  /// Unknown weather type
+  unknown,
+
+  /// Thunderstorm weather type
+  thunderstorm,
+
+  /// Drizzle weather type
+  drizzle,
+
+  /// Rain weather type
+  rain,
+
+  /// Snow weather type
+  snow,
+
+  /// Mist weather type
+  mist,
+
+  /// Smoke weather type
+  smoke,
+
+  /// Haze weather type
+  haze,
+
+  /// Dust weather type
+  dust,
+
+  /// Fog weather type
+  fog,
+
+  /// Sand weather type
+  sand,
+
+  /// Ash weather type
+  ash,
+
+  /// Squall weather type
+  squall,
+
+  /// Tornado weather type
+  tornado,
+
+  /// Clear weather type
+  clear,
+
+  /// Clouds weather type
+  clouds,
+}
+
 /// {@template weather}
 /// Weather
 /// {@endtemplate}
@@ -11,6 +62,7 @@ class Weather extends Equatable {
   /// {@macro weather}
   const Weather({
     this.id,
+    this.type,
     this.weather,
     this.description,
     this.icon,
@@ -24,6 +76,10 @@ class Weather extends Equatable {
   /// https://openweathermap.org/weather-conditions
   @JsonKey(name: 'id')
   final num? id;
+
+  /// Weather type
+  /// Convert id to enum
+  final WeatherType? type;
 
   /// Group of weather parameters
   /// Eg. Rain, Snow, Clouds, Drizzle, Thunderstorm, Atmosphere, Clear
@@ -41,12 +97,14 @@ class Weather extends Equatable {
   /// Creates a copy of the current Weather with property changes
   Weather copyWith({
     num? id,
+    WeatherType? type,
     String? weather,
     String? description,
     String? icon,
   }) {
     return Weather(
       id: id ?? this.id,
+      type: type ?? this.type,
       weather: weather ?? this.weather,
       description: description ?? this.description,
       icon: icon ?? this.icon,
@@ -56,6 +114,7 @@ class Weather extends Equatable {
   @override
   List<Object?> get props => [
         id,
+        type,
         weather,
         description,
         icon,
@@ -66,6 +125,6 @@ class Weather extends Equatable {
 
   /// Creates a toString() override for Weather
   @override
-  String toString() => 'Weather(id: $id, weather: $weather, '
+  String toString() => 'Weather(id: $id, type: $type, weather: $weather, '
       'description: $description, icon: $icon)';
 }
