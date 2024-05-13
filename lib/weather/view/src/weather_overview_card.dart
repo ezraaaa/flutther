@@ -49,29 +49,16 @@ class WeatherOverviewCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
-                if (temperature != feelsLikeTemperature) ...[
-                  SizedBox(height: spacing / 2),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        const TextSpan(text: 'Feels like '),
-                        TextSpan(
-                          text: numberFormat.format(feelsLikeTemperature),
-                        ),
-                        const TextSpan(text: '°C'),
-                      ],
-                    ),
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                ],
                 SizedBox(height: spacing),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const WeatherIcon(),
                     SizedBox(width: spacing),
-                    const WeatherLabel(),
+                    DefaultTextStyle(
+                      style: Theme.of(context).textTheme.titleMedium!,
+                      child: const WeatherLabel(),
+                    ),
                   ],
                 ),
                 SizedBox(height: spacing / 2),
@@ -88,6 +75,7 @@ class WeatherOverviewCard extends StatelessWidget {
                     ],
                   ),
                   textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleMedium,
                 ),
               ],
             ),
