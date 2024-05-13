@@ -22,10 +22,12 @@ dependencies:
   flutter_bloc: ^8.1.4
   flutter_localizations:
     sdk: flutter
+  geocoding: ^3.0.0
+  geolocator: ^11.0.0
   google_fonts: ^6.2.1
   intl: ^0.18.1
-  location: ^6.0.2
   material_design_icons_flutter: ^7.0.7296
+  permission_handler: ^11.3.1
   weather_provider:
     path: packages/weather/weather_provider
   weather_repository:
