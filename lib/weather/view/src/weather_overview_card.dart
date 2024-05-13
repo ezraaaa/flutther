@@ -19,7 +19,6 @@ class WeatherOverviewCard extends StatelessWidget {
       builder: (context, state) {
         final currentWeather = state.currentWeather;
         final temperature = currentWeather.mainDetails?.temperature ?? 0;
-        final feelsLikeTemperature = currentWeather.mainDetails?.feelsLike ?? 0;
         final minTemperature =
             currentWeather.mainDetails?.minimumTemperature ?? 0;
         final maxTemeperature =
